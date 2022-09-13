@@ -1,4 +1,13 @@
 import './style.css';
+import RainCloud from './assets/raincloud.svg';
+
+function renderImage(image, alt) {
+  const img = new Image();
+  img.src = image;
+  img.alt = alt;
+  img.classList.add('weatherIcon');
+  return img;
+}
 
 const getWeatherData = async (city) => {
   const apiKey = 'fd553c93063c3987982ce1a5cc2cc71b';
@@ -14,7 +23,7 @@ function paintUI(response) {
   const { temp } = response.main;
   const { description } = response.weather[0];
   // Appends
-  document.getElementById('weatherIcon').classList.add('fa-solid', 'fa-clouds');
+  document.getElementById('weatherIcon').append(renderImage(RainCloud, 'Image of a raincloud'));
   document.getElementById('city').innerHTML = city;
   document.getElementById('temp').innerHTML = temp;
   document.getElementById('description').innerHTML = description;
