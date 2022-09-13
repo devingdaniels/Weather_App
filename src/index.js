@@ -1,9 +1,27 @@
-import { paintUI, getWeatherData } from './weatherAPI';
+import getWeatherData from './weatherAPI';
+import { todayWeatherCard } from './createWeatherCards';
 
-const search = document.getElementById('search');
+const searchButton = document.getElementById('search');
 
-search.addEventListener('click', () => {
+function handle(data) {
+  console.log(data);
+  const weatherContainer = todayWeatherCard(data);
+  const anchor = document.getElementById('weather-today');
+  anchor.append(weatherContainer);
+}
+
+searchButton.addEventListener('click', () => {
   const city = document.getElementById('cityInput').value;
   getWeatherData(city)
-    .then((response) => paintUI(response));
+    .then((data) => {
+      handle(data);
+    });
 });
+
+// function renderImage(image, alt) {
+//   const img = new Image();
+//   img.src = image;
+//   img.alt = alt;
+//   img.classList.add('weatherIcon');
+//   return img;
+// }

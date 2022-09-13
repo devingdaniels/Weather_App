@@ -1,35 +1,24 @@
 import './style.css';
-import RainCloud from './assets/raincloud.svg';
 
-function renderImage(image, alt) {
-  const img = new Image();
-  img.src = image;
-  img.alt = alt;
-  img.classList.add('weatherIcon');
-  return img;
-}
-
-const getWeatherData = async (city) => {
+export default async function getWeatherData(cityName) {
+  // The key for the Weather API
   const apiKey = 'fd553c93063c3987982ce1a5cc2cc71b';
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`, { mode: 'cors' });
+  // Get a response (returns a promise) for the requested data from OpenWeather
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`, { mode: 'cors' });
+  // Get data object we're are interested in
   const weatherData = await response.json();
-  return weatherData;
-};
-
-function paintUI(response) {
-  console.log(response);
-  // Data
-  const city = response.name;
-  const { temp } = response.main;
-  const { description } = response.weather[0];
-  // Appends
-  document.getElementById('weatherIcon').append(renderImage(RainCloud, 'Image of a raincloud'));
-  document.getElementById('city').innerHTML = city;
-  document.getElementById('temp').innerHTML = temp;
-  document.getElementById('description').innerHTML = description;
+  // Create object for storing relevant weather data
+  const data = {
+    city: '',
+    temp: '',
+    humidity: '',
+    description: '',
+  };
+  // save data
+  data.city = weatherData.name;
+  data.temp = weatherData.main.temp;
+  data.humidity = weatherData.main.humidity;
+  data.description = weatherData.weather[0].description;
+  // Return weather data object
+  return data;
 }
-
-export {
-  paintUI,
-  getWeatherData,
-};
