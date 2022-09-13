@@ -10,16 +10,14 @@
     <script src="https://kit.fontawesome.com/6b743a9a10.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-      <h1>Weather App</h1>
-    </header>
-    <main>
-      <div id="weather-today"></div>
+    <main id="grid-layout">
+      <section class="todayWeatherAndSearchContainer">
+      <div id="current-weather-anchor"></div>
       <form action="#">
-        <label for="cityInput">City</label>
-        <input id="cityInput" placeholder="Search..."></input>
-        <button id="search" type="button">Search</button>
-        </form>
+        <input id="cityInput" type="text" placeholder="Search..." required></input>
+        <input id='searchForm'type="button" value="Submit form">
+      </form>
+    </section>
     </main>
     
   </body>

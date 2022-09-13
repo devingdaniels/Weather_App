@@ -3,6 +3,8 @@ function todayWeatherCard(data) {
   const components = [];
   // Section container
   const container = document.createElement('div');
+  // Add styling class
+  container.classList.add('weatherTodayCard');
   // Section elements
 
   // Call function that returns weather icon
@@ -27,6 +29,14 @@ function todayWeatherCard(data) {
   });
 
   return container;
+}
+
+function renderImage(image, alt) {
+  const img = new Image();
+  img.src = image;
+  img.alt = alt;
+  img.classList.add('weatherIcon');
+  return img;
 }
 
 export { todayWeatherCard };

@@ -1,27 +1,30 @@
 import getWeatherData from './weatherAPI';
 import { todayWeatherCard } from './createWeatherCards';
 
-const searchButton = document.getElementById('search');
+const searchButton = document.getElementById('searchForm');
 
 function handle(data) {
-  console.log(data);
   const weatherContainer = todayWeatherCard(data);
-  const anchor = document.getElementById('weather-today');
+  const anchor = document.getElementById('current-weather-anchor');
+  // Remove the previous data
+  anchor.innerHTML = '';
   anchor.append(weatherContainer);
 }
 
-searchButton.addEventListener('click', () => {
+searchButton.onclick = () => {
+  // Prevent default form behavior
   const city = document.getElementById('cityInput').value;
-  getWeatherData(city)
+  getWeatherData(city, 'metric')
     .then((data) => {
       handle(data);
     });
-});
+};
 
-// function renderImage(image, alt) {
-//   const img = new Image();
-//   img.src = image;
-//   img.alt = alt;
-//   img.classList.add('weatherIcon');
-//   return img;
-// }
+function initWebSite() {
+  getWeatherData('eugene')
+    .then((data) => {
+      handle(data);
+    });
+}
+
+initWebSite();

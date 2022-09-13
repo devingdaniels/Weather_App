@@ -1,3 +1,8 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 html{
     background: url('./assets/background.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -5,9 +10,18 @@ html{
   -o-background-size: cover;
   background-size: cover;
 }
-
-
-
-.weatherIcon{
-    height: 7rem;
+.weatherTodayCard{
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    width: max-content;
+    padding: 10px;
+    margin: auto;
+}
+.todayWeatherAndSearchContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    border: 2px solid red;
+   
 }
