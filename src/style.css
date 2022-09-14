@@ -1,5 +1,5 @@
 *{
-    color: white;
+    
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -16,6 +16,7 @@ main{
 }
 .top-section{
     display: flex;
+    color: white;
 }
 .center-today-info{
     display: flex;
@@ -26,7 +27,7 @@ main{
     text-align: center;
 }
 #today-icon{
-    height: 5em;
+    height: 8em;
     filter: invert(1);
 }
 
@@ -71,4 +72,30 @@ main{
 .dataInfoAndUnit{
     display: flex;
     font-size: 2em;
+}
+
+#cityInput{
+    background-color: transparent;
+    border: 1px solid white;
+}
+#cityInput::placeholder{
+    color: white;
+}
+#cityInput:focus, #cityInput:active {
+    background: transparent;
+}
+
+#searchForm{
+    background-color: transparent;
+    border: none;
+    filter: invert(1);
+    cursor: pointer;
+}
+
+#searchForm #searchIcon{
+    height: 17px;
+    font-size: 17px;
+    position: relative;
+    top: 5px;
+    cursor: pointer;
 }

@@ -1,42 +1,41 @@
 import Fahrenheit from './assets/fahrenheit.svg';
-// import Celsius from './assets/celsius.svg';
-// import ThunderStorm from './assets/thunderstorm.svg';
-// import Drizzle from './assets/drizzle.svg';
-// import HeavyRain from './assets/heavy-rain.svg';
-// import Snow from './assets/snow-flake.svg';
-// import Sun from './assets/sun.svg';
+import Celsius from './assets/celsius.svg';
+import ThunderStorm from './assets/thunderstorm.svg';
+import Drizzle from './assets/drizzle.svg';
+import HeavyRain from './assets/heavy-rain.svg';
+import Snow from './assets/snow-flake.svg';
+import Sun from './assets/sun.svg';
 import City from './assets/city.svg';
 import Location from './assets/location.svg';
 import Thermostat from './assets/thermostat.svg';
 import Wind from './assets/wind.svg';
 import Speed from './assets/speed.svg';
 import Humidity from './assets/humidity.svg';
-import Percentage from './assets/percentage.svg';
 
-// function todayWeatherIcon(val) {
-//   const value = Number(val);
-//   if (value >= 200 && value <= 232) {
-//     return ThunderStorm;
-//   }
-//   if (value >= 300 && value <= 321) {
-//     return Drizzle;
-//   }
-//   if (value >= 500 && value <= 531) {
-//     return HeavyRain;
-//   }
-//   if (value >= 600 && value <= 622) {
-//     return Snow;
-//   }
-//   if (value === 800) {
-//     // This is for clear sky
-//     // Add code here
-//     // If it is night, pass in moon
-//     // else pass in sun
-//     return Sun;
-//   }
-//   // default case
-//   return Sun;
-// }
+function todayWeatherIcon(val) {
+  const value = Number(val);
+  if (value >= 200 && value <= 232) {
+    return ThunderStorm;
+  }
+  if (value >= 300 && value <= 321) {
+    return Drizzle;
+  }
+  if (value >= 500 && value <= 531) {
+    return HeavyRain;
+  }
+  if (value >= 600 && value <= 622) {
+    return Snow;
+  }
+  if (value === 800) {
+    // This is for clear sky
+    // Add code here
+    // If it is night, pass in moon
+    // else pass in sun
+    return Sun;
+  }
+  // default case
+  return Sun;
+}
 
 function createWeatherWidget(img, heading, data, unitImg) {
   const container = document.createElement('div');
@@ -108,8 +107,8 @@ function createLatLonItem(lat, lon) {
   infoContainer.classList.add('itemInfo');
   const latEl = document.createElement('h3');
   const lonEl = document.createElement('h3');
-  latEl.innerHTML = `Latitude: ${lat}`;
-  lonEl.innerHTML = `Longitude: ${lon}`;
+  latEl.innerHTML = `Lat: ${lat}`;
+  lonEl.innerHTML = `Lon: ${lon}`;
   infoContainer.append(latEl);
   infoContainer.append(lonEl);
   el.append(infoContainer);
@@ -134,26 +133,57 @@ function populateRightSection(data) {
   todayHumidity.append(createWeatherWidget(Humidity, 'Humidity', data.humidity, ''));
 }
 
-export default function populateTodayWeatherData(data) {
-  populateLeftSection(data);
-  populateRightSection(data);
+function populateMiddleSection(data) {
+// Middle section
+  const todayIcon = document.getElementById('today-icon');
+  const todayTemp = document.getElementById('today-temp');
+  const unit = document.getElementById('unit');
+  const todayDescription = document.getElementById('today-description');
+  todayIcon.src = todayWeatherIcon(data.id);
+  // Set current tempature
+  todayTemp.innerHTML = data.temp;
+  // Display temp with current unit
+  if (data.unit === 'imperial') {
+    // eslint-disable-next-line no-param-reassign
+    unit.src = Fahrenheit;
+  } else {
+    unit.src = Celsius;
+  }
+  todayDescription.innerHTML = data.description;
 }
 
-// function populateMiddleSection(data) {
-// // Middle section
-//   const todayIcon = document.getElementById('today-icon');
-//   const todayTemp = document.getElementById('today-temp');
-//   const unit = document.getElementById('unit');
-//   const todayDescription = document.getElementById('today-description');
-//   todayIcon.src = todayWeatherIcon(data.id);
-//   // Set current tempature
-//   todayTemp.innerHTML = data.temp;
-//   // Display temp with current unit
-//   if (data.unit === 'imperial') {
-//     // eslint-disable-next-line no-param-reassign
-//     unit.src = Fahrenheit;
-//   } else {
-//     unit.src = Celsius;
-//   }
-//   todayDescription.innerHTML = data.description;
-// }
+function clearPreviousData() {
+  const todayIcon = document.getElementById('today-icon');
+  const todayTemp = document.getElementById('today-temp');
+  const unit = document.getElementById('unit');
+  const todayDescription = document.getElementById('today-description');
+  const todayFeelsLike = document.getElementById('today-feels-like');
+  const todayWindSpeed = document.getElementById('today-wind-speed');
+  const todayHumidity = document.getElementById('today-humidity');
+  const city = document.getElementById('city');
+  const latitudeLongitude = document.getElementById('lat-lon');
+
+  const array = [];
+  array.push(todayIcon);
+  array.push(todayTemp);
+  array.push(unit);
+  array.push(todayDescription);
+  array.push(todayFeelsLike);
+  array.push(todayFeelsLike);
+  array.push(todayWindSpeed);
+  array.push(todayHumidity);
+  array.push(city);
+  array.push(latitudeLongitude);
+
+  array.forEach((el) => {
+    // eslint-disable-next-line no-param-reassign
+    el.innerHTML = '';
+  });
+}
+
+export default function populateTodayWeatherData(data) {
+  clearPreviousData();
+  populateLeftSection(data);
+  populateRightSection(data);
+  populateMiddleSection(data);
+}
