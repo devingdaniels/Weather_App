@@ -1,27 +1,23 @@
 import getWeatherData from './weatherAPI';
-import { todayWeatherCard } from './createWeatherCards';
+import { addTodayWeather } from './populateTodayWeather';
 
 const searchButton = document.getElementById('searchForm');
 
 function handle(data) {
-  const weatherContainer = todayWeatherCard(data);
-  const anchor = document.getElementById('current-weather-anchor');
-  // Remove the previous data
-  anchor.innerHTML = '';
-  anchor.append(weatherContainer);
+  addTodayWeather(data);
 }
 
 searchButton.onclick = () => {
   // Prevent default form behavior
   const city = document.getElementById('cityInput').value;
-  getWeatherData(city, 'metric')
+  getWeatherData(city, 'imperial')
     .then((data) => {
       handle(data);
     });
 };
 
 function initWebSite() {
-  getWeatherData('eugene')
+  getWeatherData('Medellin')
     .then((data) => {
       handle(data);
     });

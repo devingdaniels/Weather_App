@@ -10,15 +10,38 @@
     <script src="https://kit.fontawesome.com/6b743a9a10.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <main id="grid-layout">
-      <section class="todayWeatherAndSearchContainer">
-      <div id="current-weather-anchor"></div>
-      <form action="#">
-        <input id="cityInput" type="text" placeholder="Search..." required></input>
-        <input id='searchForm'type="button" value="Submit form">
-      </form>
-    </section>
+    <main>
+      <div class="top-section">
+        <section>          
+          <div id="city"></div>
+          <div id="lat"></div>
+          <div id="lon"></div>
+        </section>
+        <section class="center-today-info">
+          <div>
+            <img id="today-icon" src="#" alt="Icon representing the current weather" >
+            <div class="temperatureContainer">
+              <div id="today-temp"></div>
+              <img class='units' src="#" alt="">
+          </div>
+          </div>         
+          <p id="today-description"></p>
+          <form action="#">
+            <input id="cityInput" type="text" placeholder="Search..." required></input>
+            <input id='searchForm'type="button" value="Submit form">
+          </form>
+        </section>
+        <section>          
+          <p id="today-feels-like"></p>
+          <p id="today-wind-speed"></p>
+          <p id="today-humidity"></p>   
+        </section>
+      </div>
+      <div class="bottom-section">
+        <section>
+          bottom section
+        </section>
+      </div>
     </main>
-    
   </body>
 </html>

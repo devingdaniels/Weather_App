@@ -12,7 +12,6 @@ export default async function getWeatherData(cityName, units) {
   // Get data object we're are interested in
   const weatherData = await response.json();
   // Create object for storing relevant weather data
-  console.log(weatherData);
   const data = {
     id: '',
     mainWeather: '',
@@ -24,19 +23,21 @@ export default async function getWeatherData(cityName, units) {
     feelsLike: '',
     lat: '',
     lon: '',
+    unit: units,
   };
   // save data
   data.id = weatherData.weather[0].id;
   data.mainWeather = weatherData.weather[0].main;
   data.city = weatherData.name;
-  data.temp = weatherData.main.temp;
+  data.temp = Math.round(weatherData.main.temp);
   data.description = weatherData.weather[0].description;
-  data.humidity = weatherData.main.humidity;
-  data.windSpeed = weatherData.wind.speed;
-  data.feelsLike = weatherData.main.feels_like;
+  data.humidity = Math.round(weatherData.main.humidity);
+  data.windSpeed = Math.round(weatherData.wind.speed);
+  data.feelsLike = Math.round(weatherData.main.feels_like);
   data.lat = weatherData.coord.lat;
   data.lon = weatherData.coord.lon;
+  // Save the units
+  data.unit = unit;
   // Return weather data object
-  console.log(data);
   return data;
 }
