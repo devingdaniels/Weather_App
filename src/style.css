@@ -47,6 +47,11 @@ main{
     width: 1em;
     filter: invert(1);
 }
+#today-description{
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
 
 #cityInput{
     background-color: transparent;

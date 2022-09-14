@@ -1,29 +1,40 @@
 import './style.css';
-import { getTodayMainWeatherData } from './weatherAPI';
+import { getTodayMainWeatherData, getTodayHourlyData } from './weatherAPI';
 import populateTodayWeatherData from './populateTodayWeather';
-import addSearchIcon from './helperFunctions';
+import populateForecastWeatherData from './populateForecastData';
+import { addSearchIcon } from './helperFunctions';
 
 const searchButton = document.getElementById('searchForm');
 
-function handle(data) {
-  populateTodayWeatherData(data);
-}
-
 searchButton.onclick = () => {
-  // Prevent default form behavior
+  // Add code here for switching units of measure
+  // Hard code for now
+  const unit = 'imperial';
+  // Save the current city
   const city = document.getElementById('cityInput').value;
-  getTodayMainWeatherData(city, 'imperial')
+  // Call API, get current data, pass data and populate current view
+  getTodayMainWeatherData(city, unit)
     .then((data) => {
-      handle(data);
-    });
+      populateTodayWeatherData(data);
+    });// add code here to catch errors
+  // Call API, get forecast data, pass data and populate forecast view
+  // getTodayHourlyData(city, unit)
+  //   .then((data) => {
+  //     populateForecastWeatherData(data);
+  //   });
 };
 
 function initWebSite() {
   addSearchIcon();
   getTodayMainWeatherData('Medellin')
     .then((data) => {
-      handle(data);
+      populateTodayWeatherData(data);
     });
+  // Call API, get forecast data, pass data and populate forecast view
+  // getTodayHourlyData('Medellin', 'imperial')
+  //   .then((data) => {
+  //     populateForecastWeatherData(data);
+  //   });
 }
 
 initWebSite();

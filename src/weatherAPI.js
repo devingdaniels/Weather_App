@@ -1,14 +1,4 @@
 async function getTodayMainWeatherData(cityName, units) {
-  let unit = units;
-  if (unit === '' || typeof unit === 'undefined') {
-    unit = 'imperial';
-  }
-  // The key for the Weather API
-  const apiKey = 'fd553c93063c3987982ce1a5cc2cc71b';
-  // Get a response (returns a promise) for the requested data from OpenWeather
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${unit}&appid=${apiKey}`, { mode: 'cors' });
-  // Get data object we're are interested in
-  const weatherData = await response.json();
   // Create object for storing relevant weather data
   const data = {
     id: '',
@@ -21,8 +11,22 @@ async function getTodayMainWeatherData(cityName, units) {
     feelsLike: '',
     lat: '',
     lon: '',
-    unit: units,
+    unit: '',
   };
+  // Determine the units of measure
+  let unit = units;
+  if (unit === '' || typeof unit === 'undefined') {
+    unit = 'imperial';
+  }
+  // Save the units
+  data.unit = unit;
+  // Make the API call
+  // The key for the Weather API
+  const apiKey = 'fd553c93063c3987982ce1a5cc2cc71b';
+  // Get a response (returns a promise) for the requested data from OpenWeather
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${unit}&appid=${apiKey}`, { mode: 'cors' });
+  // Get data object we're are interested in
+  const weatherData = await response.json();
   // save data
   data.id = weatherData.weather[0].id;
   data.mainWeather = weatherData.weather[0].main;
@@ -34,22 +38,39 @@ async function getTodayMainWeatherData(cityName, units) {
   data.feelsLike = Math.round(weatherData.main.feels_like);
   data.lat = weatherData.coord.lat;
   data.lon = weatherData.coord.lon;
-  // Save the units
-  data.unit = unit;
   // Return weather data object
-  getTodayHourlyData();
   return data;
 }
 
-async function getTodayHourlyData() {
-  const cityName = 'medellin';
+async function getTodayHourlyData(city, units) {
+  // Create object for storing relevant weather data
+  const data = {
+    id: '',
+    mainWeather: '',
+    city: '',
+    temp: '',
+    description: '',
+    humidity: '',
+    windSpeed: '',
+    feelsLike: '',
+    lat: '',
+    lon: '',
+    unit: '',
+  };
+  // Determine the units of measure
+  let unit = units;
+  if (unit === '' || typeof unit === 'undefined') {
+    unit = 'imperial';
+  }
+  // Save the units
+  data.unit = unit;
   // The key for the Weather API
   const apiKey = '6afefd0acc02015759340d80dc5686e2';
   // Get a response (returns a promise) for the requested data from OpenWeather
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`, { mode: 'cors' });
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&appid=${apiKey}`, { mode: 'cors' });
   // Get data object we're are interested in
   const weatherData = await response.json();
-  console.log(weatherData);
+  return weatherData;
 }
 
 export {

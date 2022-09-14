@@ -1,3 +1,6 @@
+// Methods
+import { firstCharSentenceUpper } from './helperFunctions';
+// Images
 import Fahrenheit from './assets/fahrenheit.svg';
 import Celsius from './assets/celsius.svg';
 import ThunderStorm from './assets/thunderstorm.svg';
@@ -145,7 +148,7 @@ function populateMiddleSection(data) {
   } else {
     unit.src = Celsius;
   }
-  todayDescription.innerHTML = data.description;
+  todayDescription.innerHTML = firstCharSentenceUpper(data.description);
 }
 
 function clearPreviousData() {
