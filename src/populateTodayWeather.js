@@ -39,13 +39,12 @@ function todayWeatherIcon(val) {
 
 function createWeatherWidget(img, heading, data, unitImg) {
   const container = document.createElement('div');
-  container.classList.add('todayWeatherItemContainer');
+  container.classList.add('topRightItemContainer');
   const image = new Image();
   image.src = img;
   image.classList.add('todayWeatherItemImage');
 
   const infoContainer = document.createElement('div');
-  infoContainer.classList.add('todayWeatherItemInfo');
   if (heading !== '') {
     const title = document.createElement('p');
     title.classList.add('todayInfoLabel');
@@ -79,7 +78,6 @@ function createWeatherWidget(img, heading, data, unitImg) {
 function createCityItem(cityName) {
   // Container for city name and city image
   const el = document.createElement('div');
-  el.classList.add('todayWeatherItemContainer');
   // Create image
   const img = new Image();
   img.src = City;
@@ -87,7 +85,6 @@ function createCityItem(cityName) {
   img.classList.add('todayWeatherItemImage');
   el.append(img);
   const name = document.createElement('h1');
-  name.classList.add('itemInfo');
   name.innerHTML = cityName;
   el.append(name);
   return el;
@@ -104,7 +101,6 @@ function createLatLonItem(lat, lon) {
   img.classList.add('todayWeatherItemImage');
   el.append(img);
   const infoContainer = document.createElement('div');
-  infoContainer.classList.add('itemInfo');
   const latEl = document.createElement('h3');
   const lonEl = document.createElement('h3');
   latEl.innerHTML = `Lat: ${lat}`;

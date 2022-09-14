@@ -1,6 +1,7 @@
-import getWeatherData from './weatherAPI';
+import './style.css';
+import { getTodayMainWeatherData } from './weatherAPI';
 import populateTodayWeatherData from './populateTodayWeather';
-import Search from './assets/search.svg';
+import addSearchIcon from './helperFunctions';
 
 const searchButton = document.getElementById('searchForm');
 
@@ -11,7 +12,7 @@ function handle(data) {
 searchButton.onclick = () => {
   // Prevent default form behavior
   const city = document.getElementById('cityInput').value;
-  getWeatherData(city, 'imperial')
+  getTodayMainWeatherData(city, 'imperial')
     .then((data) => {
       handle(data);
     });
@@ -19,18 +20,10 @@ searchButton.onclick = () => {
 
 function initWebSite() {
   addSearchIcon();
-  getWeatherData('Medellin')
+  getTodayMainWeatherData('Medellin')
     .then((data) => {
       handle(data);
     });
-}
-
-function addSearchIcon() {
-  const search = document.getElementById('searchIcon');
-  let img = new Image();
-  img = Search;
-  search.src = img;
-  search.alt = 'Image of search icon';
 }
 
 initWebSite();

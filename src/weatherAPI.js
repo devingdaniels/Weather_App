@@ -1,6 +1,4 @@
-import './style.css';
-
-export default async function getWeatherData(cityName, units) {
+async function getTodayMainWeatherData(cityName, units) {
   let unit = units;
   if (unit === '' || typeof unit === 'undefined') {
     unit = 'imperial';
@@ -39,5 +37,22 @@ export default async function getWeatherData(cityName, units) {
   // Save the units
   data.unit = unit;
   // Return weather data object
+  getTodayHourlyData();
   return data;
 }
+
+async function getTodayHourlyData() {
+  const cityName = 'medellin';
+  // The key for the Weather API
+  const apiKey = '6afefd0acc02015759340d80dc5686e2';
+  // Get a response (returns a promise) for the requested data from OpenWeather
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`, { mode: 'cors' });
+  // Get data object we're are interested in
+  const weatherData = await response.json();
+  console.log(weatherData);
+}
+
+export {
+  getTodayMainWeatherData,
+  getTodayHourlyData,
+};
