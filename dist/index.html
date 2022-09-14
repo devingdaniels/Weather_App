@@ -8,16 +8,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <script src="https://kit.fontawesome.com/6b743a9a10.js" crossorigin="anonymous"></script>
-  <script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script></head>
-  <body class="background">
-    <i id="weatherIcon"></i>
-    <h1 id="city"></h1>
-    <p id="temp"></p>
-    <p id="description"></p>
-    <form action="#">
-    <label for="cityInput">City</label>
-    <input id="cityInput" placeholder="Search..."></input>
-    <button id="search" type="button">Search</button>
-    </form>
+  <link rel="icon" href="web-tab-favicon.png"><script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script></head>
+  <body>
+    <main>
+      <div class="top-section">
+        <section class="top-left-section">          
+          <div id="city"></div>
+          <div id="lat-lon"></div>
+        </section>
+        <section class="center-today-info">
+          <div>
+            <img id="today-icon" src="#" alt="Icon representing the current weather" >
+            <div class="temperatureContainer">
+              <div id="today-temp"></div>
+              <img id='unit' src="#" alt="">
+          </div>
+          </div>         
+          <p id="today-description"></p>
+          <form action="#">
+            <input id="cityInput" type="text" placeholder="Search..." required></input>
+            <input id='searchForm'type="button" value="Submit form">
+          </form>
+        </section>
+        <section>          
+          <p id="today-feels-like"></p>
+          <p id="today-wind-speed"></p>
+          <p id="today-humidity"></p>   
+        </section>
+      </div>
+      <div class="bottom-section">
+        <section>
+      
+        </section>
+      </div>
+    </main>
   </body>
 </html>

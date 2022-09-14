@@ -1,10 +1,10 @@
-import Fahrenheit from './assets/fahrenheit.svg';
-import Celsius from './assets/celsius.svg';
-import ThunderStorm from './assets/thunderstorm.svg';
-import Drizzle from './assets/drizzle.svg';
-import HeavyRain from './assets/heavy-rain.svg';
-import Snow from './assets/snow-flake.svg';
-import Sun from './assets/sun.svg';
+// import Fahrenheit from './assets/fahrenheit.svg';
+// import Celsius from './assets/celsius.svg';
+// import ThunderStorm from './assets/thunderstorm.svg';
+// import Drizzle from './assets/drizzle.svg';
+// import HeavyRain from './assets/heavy-rain.svg';
+// import Snow from './assets/snow-flake.svg';
+// import Sun from './assets/sun.svg';
 import City from './assets/city.svg';
 import Location from './assets/location.svg';
 
@@ -56,26 +56,55 @@ import Location from './assets/location.svg';
 
 //   return container;
 // }
-
-function populateLeftSection() {
-  // Left section
-  const city = document.getElementById('city');
-  const latitudeLongitude = document.getElementById('lat-lon');
-
-  // Left section
-  // city.append(weatherDataItem(City, '', data.city));
-  // latitude.innerHTML = data.lat;
-  // longitude.innerHTML = data.lon;
-  // // Right section
-  // todayFeelsLike.innerHTML = data.feelsLike;
-  // todayWindSpeed.innerHTML = data.windSpeed;
-  // todayHumidity.innerHTML = data.humidity;
-
-  city.append(createCityElement());
-  latitudeLongitude.append(createLatLonElement());
+function createCityItem(cityName) {
+  // Container for city name and city image
+  const el = document.createElement('div');
+  el.classList.add('todayWeatherItemContainer');
+  // Create image
+  const img = new Image();
+  img.src = City;
+  img.alt = 'Icon representing a city';
+  img.classList.add('todayWeatherItemImage');
+  el.append(img);
+  const name = document.createElement('h1');
+  name.classList.add('itemInfo');
+  name.innerHTML = cityName;
+  el.append(name);
+  return el;
 }
 
-function populateTodayWeatherData(data) {
+function createLatLonItem(lat, lon) {
+  // Create image
+  const el = document.createElement('div');
+  el.classList.add('todayWeatherItemContainer');
+  // Create image
+  const img = new Image();
+  img.src = Location;
+  img.alt = 'Icon representing a drop location';
+  img.classList.add('todayWeatherItemImage');
+  el.append(img);
+  const infoContainer = document.createElement('div');
+  infoContainer.classList.add('itemInfo');
+  const latEl = document.createElement('h3');
+  const lonEl = document.createElement('h3');
+  latEl.innerHTML = `Latitude: ${lat}`;
+  lonEl.innerHTML = `Longitude: ${lon}`;
+  infoContainer.append(latEl);
+  infoContainer.append(lonEl);
+  el.append(infoContainer);
+  return el;
+}
+
+function populateLeftSection(data) {
+  // DOM element anchors
+  const city = document.getElementById('city');
+  const latitudeLongitude = document.getElementById('lat-lon');
+  // DOM appends
+  city.append(createCityItem(data.city));
+  latitudeLongitude.append(createLatLonItem(data.lat, data.lon));
+}
+
+export default function populateTodayWeatherData(data) {
   populateLeftSection(data);
 }
 
@@ -103,5 +132,3 @@ function populateTodayWeatherData(data) {
 //   }
 //   todayDescription.innerHTML = data.description;
 // }
-
-export { populateTodayWeatherData };

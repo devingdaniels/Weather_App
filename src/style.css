@@ -45,6 +45,10 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    height: 200px;
+}
+.itemInfo{
+    padding-left: .3em;
 }
 .todayWeatherItemContainer{
     display: flex;
@@ -52,12 +56,6 @@ main{
 }
 .todayWeatherItemImage{
     filter: invert(1);
-    height: 2rem;
+    height: 1.75rem;
 
-}
-.todayWeatherItemInfo{
-    display: flex;
-    flex-direction: column;
-    padding-left: .4em;
-    
 }

@@ -1,5 +1,5 @@
 import getWeatherData from './weatherAPI';
-import { populateTodayWeatherData } from './populateTodayWeather';
+import populateTodayWeatherData from './populateTodayWeather';
 
 const searchButton = document.getElementById('searchForm');
 

@@ -14,6 +14,7 @@ module.exports = {
       title: 'Weather App',
       filename: 'index.html',
       template: 'src/template.html',
+      favicon: 'src/assets/web-tab-favicon.png',
     }),
   ],
   devtool: 'inline-source-map',
