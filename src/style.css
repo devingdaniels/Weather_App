@@ -3,7 +3,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 html{
     background: url('./assets/background.jpg') no-repeat center center fixed; 
@@ -13,7 +12,7 @@ html{
     background-size: cover;
 }
 main{
-    padding: 6%;
+    padding: 6% 6% 0 6%;
 }
 .top-section{
     display: flex;
@@ -45,7 +44,14 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 200px;
+}
+.top-right-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.top-right-section .todayWeatherItemContainer{
+    justify-content: space-evenly;
 }
 .itemInfo{
     padding-left: .3em;
@@ -54,8 +60,15 @@ main{
     display: flex;
     align-items: center;
 }
+
 .todayWeatherItemImage{
     filter: invert(1);
-    height: 1.75rem;
-
+    height: 3rem;
+}
+.todayInfoLabel{
+    font-size: .3em;
+}
+.dataInfoAndUnit{
+    display: flex;
+    font-size: 2em;
 }
