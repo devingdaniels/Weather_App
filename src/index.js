@@ -18,10 +18,10 @@ searchButton.onclick = () => {
       populateTodayWeatherData(data);
     });// add code here to catch errors
   // Call API, get forecast data, pass data and populate forecast view
-  // getTodayHourlyData(city, unit)
-  //   .then((data) => {
-  //     populateForecastWeatherData(data);
-  //   });
+  getTodayHourlyData(city, unit)
+    .then((data) => {
+      populateForecastWeatherData(data);
+    });
 };
 
 function initWebSite() {
@@ -31,10 +31,10 @@ function initWebSite() {
       populateTodayWeatherData(data);
     });
   // Call API, get forecast data, pass data and populate forecast view
-  // getTodayHourlyData('Medellin', 'imperial')
-  //   .then((data) => {
-  //     populateForecastWeatherData(data);
-  //   });
+  getTodayHourlyData('Medellin', 'imperial')
+    .then((data) => {
+      populateForecastWeatherData(data);
+    });
 }
 
 initWebSite();

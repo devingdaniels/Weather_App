@@ -12,6 +12,7 @@ function firstCharSentenceUpper(string) {
   const words = string.split(' ');
 
   let result = '';
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < words.length; i++) {
     result += words[i][0].toUpperCase();
     result += words[i].substr(1);

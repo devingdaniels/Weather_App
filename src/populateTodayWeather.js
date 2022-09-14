@@ -14,6 +14,7 @@ import Thermostat from './assets/thermostat.svg';
 import Wind from './assets/wind.svg';
 import Speed from './assets/speed.svg';
 import Humidity from './assets/humidity.svg';
+import Clock from './assets/clock.svg';
 
 function todayWeatherIcon(val) {
   const value = Number(val);
@@ -103,14 +104,23 @@ function createLatLonItem(lat, lon) {
   img.alt = 'Icon representing a drop location';
   img.classList.add('todayWeatherItemImage');
   el.append(img);
-  const infoContainer = document.createElement('div');
-  const latEl = document.createElement('h3');
-  const lonEl = document.createElement('h3');
-  latEl.innerHTML = `Lat: ${lat}`;
-  lonEl.innerHTML = `Lon: ${lon}`;
-  infoContainer.append(latEl);
-  infoContainer.append(lonEl);
-  el.append(infoContainer);
+  const coor = document.createElement('h3');
+  coor.innerHTML = `${lat}, ${lon}`;
+  el.append(coor);
+  return el;
+}
+function createLocalTime(time) {
+  // Container for time name and time image
+  const el = document.createElement('div');
+  // Create image
+  const img = new Image();
+  img.src = Clock;
+  img.alt = 'Icon representing a city';
+  img.classList.add('todayWeatherItemImage');
+  el.append(img);
+  const name = document.createElement('h3');
+  name.innerHTML = time;
+  el.append(name);
   return el;
 }
 
@@ -118,9 +128,11 @@ function populateLeftSection(data) {
   // DOM element anchors
   const city = document.getElementById('city');
   const latitudeLongitude = document.getElementById('lat-lon');
+  const currentTime = document.getElementById('current-time');
   // DOM appends
   city.append(createCityItem(data.city));
   latitudeLongitude.append(createLatLonItem(data.lat, data.lon));
+  currentTime.append(createLocalTime(data.currentTime));
 }
 
 function populateRightSection(data) {
@@ -161,6 +173,7 @@ function clearPreviousData() {
   const todayHumidity = document.getElementById('today-humidity');
   const city = document.getElementById('city');
   const latitudeLongitude = document.getElementById('lat-lon');
+  const currentTime = document.getElementById('current-time');
 
   const array = [];
   array.push(todayIcon);
@@ -173,6 +186,7 @@ function clearPreviousData() {
   array.push(todayHumidity);
   array.push(city);
   array.push(latitudeLongitude);
+  array.push(currentTime);
 
   array.forEach((el) => {
     // eslint-disable-next-line no-param-reassign

@@ -15,7 +15,6 @@ main{
 }
 .heading{
     color: white;
-    text-align: center;
     border-bottom: 1px solid white;
     width: max-content;
     margin: auto;
@@ -24,13 +23,12 @@ main{
     display: flex;
     color: white;
     margin-bottom: 30px;
+    justify-content:space-evenly;
 }
 .center-today-info{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: max-content;   
-    margin: auto;
+    align-items: center;  
     text-align: center;
 }
 #today-icon{
@@ -56,12 +54,20 @@ main{
 #cityInput{
     background-color: transparent;
     border: 1px solid white;
+    color: white;
 }
 #cityInput::placeholder{
     color: white;
 }
 #cityInput:focus, #cityInput:active {
     background: transparent;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
 }
 
 #searchForm{
@@ -83,6 +89,8 @@ main{
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
+    /* Weird: pixels wont overflow data on shrink but percentage does?? */
+    width: 150px;
 }
 .top-left-section{
     text-align: center;
@@ -90,6 +98,8 @@ main{
 .topRightItemContainer{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    align-items: center;
 }
 .todayWeatherItemImage{
     filter: invert(1);

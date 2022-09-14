@@ -1,3 +1,5 @@
+import getLocaleTime from './getLocalTime';
+
 async function getTodayMainWeatherData(cityName, units) {
   // Create object for storing relevant weather data
   const data = {
@@ -12,6 +14,7 @@ async function getTodayMainWeatherData(cityName, units) {
     lat: '',
     lon: '',
     unit: '',
+    currentTime: 'u',
   };
   // Determine the units of measure
   let unit = units;
@@ -38,6 +41,9 @@ async function getTodayMainWeatherData(cityName, units) {
   data.feelsLike = Math.round(weatherData.main.feels_like);
   data.lat = weatherData.coord.lat;
   data.lon = weatherData.coord.lon;
+  // Get local time of city
+  const time = await getLocaleTime(data.lat, data.lon);
+  data.currentTime = time;
   // Return weather data object
   return data;
 }
@@ -70,6 +76,7 @@ async function getTodayHourlyData(city, units) {
   const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&appid=${apiKey}`, { mode: 'cors' });
   // Get data object we're are interested in
   const weatherData = await response.json();
+
   return weatherData;
 }
 
