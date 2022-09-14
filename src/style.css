@@ -7,10 +7,10 @@
 }
 html{
     background: url('./assets/background.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 main{
     padding: 6%;
@@ -27,7 +27,7 @@ main{
     text-align: center;
 }
 #today-icon{
-    height: 100px;
+    height: 5em;
     filter: invert(1);
 }
 
@@ -37,7 +37,27 @@ main{
     justify-content: center;
 }
 .temperatureContainer img{
-    width: 75px;
+    width: 1em;
     filter: invert(1);
-    padding: 0;
+}
+/* Left section of the today weather section */
+.top-left-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.todayWeatherItemContainer{
+    display: flex;
+    align-items: center;
+}
+.todayWeatherItemImage{
+    filter: invert(1);
+    height: 2rem;
+
+}
+.todayWeatherItemInfo{
+    display: flex;
+    flex-direction: column;
+    padding-left: .4em;
+    
 }

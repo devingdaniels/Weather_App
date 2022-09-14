@@ -1,10 +1,10 @@
 import getWeatherData from './weatherAPI';
-import { addTodayWeather } from './populateTodayWeather';
+import { populateTodayWeatherData } from './populateTodayWeather';
 
 const searchButton = document.getElementById('searchForm');
 
 function handle(data) {
-  addTodayWeather(data);
+  populateTodayWeatherData(data);
 }
 
 searchButton.onclick = () => {
