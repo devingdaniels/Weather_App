@@ -11,18 +11,18 @@ html{
     background-size: cover;
 }
 main{
-    padding: 3% 10% 0 10%;
+    padding: 1% 10% 0 10%;
 }
 .heading{
     color: white;
     border-bottom: 1px solid white;
     width: max-content;
-    margin: auto;
+    margin: 0 auto 10px auto;
 }
 .top-section{
     display: flex;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     justify-content:space-evenly;
 }
 .center-today-info{
@@ -116,4 +116,74 @@ input:-webkit-autofill:active {
     display: flex;
     font-size: 2em;
     align-items: center;
+}
+/* Carousel */
+.forecast-carousel{
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    height: 200px;
+}
+
+.carousel-image{
+    height: 100%;
+    width: 100%;
+    /* Very useful for dynamic covering with images */
+    /* object-fit: cover; */
+    filter: invert(1);
+}
+
+.carousel-track-container{
+    position: relative;
+    border: 2px yellow solid;
+    height: 100%;
+}
+
+.carousel-track{
+    list-style: none;
+}
+.carousel-slide{
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    width: 100%;
+}
+.carousel-button{
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background-color: transparent;
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.carousel-button--left{
+    left: -40px;
+}
+
+.carousel-button--right{
+    right: -40px;
+}
+
+.carousel-button img {
+    width: 35px;
+}
+.carousel-nav{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.carousel-indicator{
+    border: 0;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background: rgba(255,255,255, .4);
+    margin: 0 12px;
+}
+
+.carousel-indicator.current-slide{
+    background: rgba(255,255,255, .9);
 }

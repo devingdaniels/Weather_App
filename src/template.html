@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <script src="https://kit.fontawesome.com/6b743a9a10.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <main>
@@ -40,7 +37,33 @@
       </div>
       <h1 class="heading">Forecast</h1>
       <div class="bottom-section">
-        <section>      
+        <section>
+          <div class="forecast-carousel">
+            <button class="carousel-button carousel-button--left">
+              <img src="<%=require('./assets/left.svg')%>" alt="">
+            </button>
+            <div class="carousel-track-container">
+              <ul class="carousel-track">
+                <li class="carousel-slide">
+                  <img class="carousel-image" src="<%=require('./assets/conditions/heavy-rain.svg')%>" alt="">
+                </li>
+                <li class="carousel-slide">
+                  <img class="carousel-image" src="<%=require('./assets/conditions/heavy-rain.svg')%>" alt="">
+                </li>
+                <li class="carousel-slide">
+                  <img class="carousel-image" src="<%=require('./assets/conditions/humidity.svg')%>">                  
+                </li>
+              </ul>
+            </div>
+            <button class="carousel-button carousel-button--right">
+              <img src="<%=require('./assets/right.svg')%>" alt="">
+            </button>
+            <div class="carousel-nav">
+              <button class="carousel-indicator current-slide"></button>
+              <button class="carousel-indicator"></button>
+              <button class="carousel-indicator"></button>
+            </div>
+          </div>
         </section>
       </div>
     </main>
