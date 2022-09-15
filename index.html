@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <script src="https://kit.fontawesome.com/6b743a9a10.js" crossorigin="anonymous"></script>
   <link rel="icon" href="web-tab-favicon.png"><script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script></head>
   <body>
     <main>
+      <h1 class="heading">Current</h1>
       <div class="top-section">
         <section class="top-left-section">          
           <div id="city"></div>
           <div id="lat-lon"></div>
+          <div id="current-time"></div>
         </section>
         <section class="center-today-info">
           <div>
@@ -24,21 +23,47 @@
               <img id='unit' src="#" alt="">
           </div>
           </div>         
-          <p id="today-description"></p>
+          <div id="today-description"></div>
           <form action="#">
             <input id="cityInput" type="text" placeholder="Search..." required></input>
-            <input id='searchForm'type="button" value="Submit form">
+            <button id='searchForm' type="button"><img id='searchIcon'></img></button>
           </form>
         </section>
-        <section>          
-          <p id="today-feels-like"></p>
-          <p id="today-wind-speed"></p>
-          <p id="today-humidity"></p>   
+        <section class="top-right-section">          
+          <div id="today-feels-like"></div>
+          <div id="today-wind-speed"></div>
+          <div id="today-humidity"></div>   
         </section>
       </div>
+      <h1 class="heading">Forecast</h1>
       <div class="bottom-section">
         <section>
-      
+          <div class="forecast-carousel">
+            <button class="carousel-button carousel-button--left">
+              <img src="b086e7876accdaccbb18.svg" alt="">
+            </button>
+            <div class="carousel-track-container">
+              <ul class="carousel-track">
+                <li class="carousel-slide">
+                  <img class="carousel-image" src="81082523f9df25029b28.svg" alt="">
+                </li>
+                <li class="carousel-slide">
+                  <img class="carousel-image" src="d0a854f9d7e39f755269.svg" alt="">
+                </li>
+                <li class="carousel-slide">
+                  <img class="carousel-image" src="a2c76596a79308f215a2.svg" alt="">
+                </li>
+              </ul>
+            </div>
+            <button class="carousel-button carousel-button--right">
+              <img src="5ca1afb9e01f7460893e.svg" alt="">
+            </button>
+            <div class="carousel-nav">
+              <button class="carousel-indicator"></button>
+              <button class="carousel-indicator"></button>
+              <button class="carousel-indicator"></button>
+            </div>
+          </div>
         </section>
       </div>
     </main>
