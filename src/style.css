@@ -137,10 +137,14 @@ input:-webkit-autofill:active {
     position: relative;
     border: 2px yellow solid;
     height: 100%;
+    overflow: hidden;
 }
 
 .carousel-track{
     list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 1000ms ease-in;
 }
 .carousel-slide{
     position: absolute;
@@ -182,8 +186,13 @@ input:-webkit-autofill:active {
     height: 15px;
     background: rgba(255,255,255, .4);
     margin: 0 12px;
+    cursor: pointer;
 }
 
 .carousel-indicator.current-slide{
     background: rgba(255,255,255, .9);
+}
+
+.isHidden{
+    display: none;
 }
