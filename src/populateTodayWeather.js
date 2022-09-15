@@ -1,13 +1,8 @@
 // Methods
-import { firstCharSentenceUpper } from './helperFunctions';
+import { firstCharSentenceUpper, todayWeatherIcon } from './helperFunctions';
 // Images
 import Fahrenheit from './assets/fahrenheit.svg';
 import Celsius from './assets/celsius.svg';
-import ThunderStorm from './assets/conditions/thunderstorm.svg';
-import Drizzle from './assets/conditions/drizzle.svg';
-import HeavyRain from './assets/conditions/heavy-rain.svg';
-import Snow from './assets/conditions/snow-flake.svg';
-import Sun from './assets/conditions/sun.svg';
 import City from './assets/city.svg';
 import Location from './assets/location.svg';
 import Thermostat from './assets/thermostat.svg';
@@ -15,31 +10,6 @@ import Wind from './assets/conditions/wind.svg';
 import Speed from './assets/speed.svg';
 import Humidity from './assets/conditions/humidity.svg';
 import Clock from './assets/clock.svg';
-
-function todayWeatherIcon(val) {
-  const value = Number(val);
-  if (value >= 200 && value <= 232) {
-    return ThunderStorm;
-  }
-  if (value >= 300 && value <= 321) {
-    return Drizzle;
-  }
-  if (value >= 500 && value <= 531) {
-    return HeavyRain;
-  }
-  if (value >= 600 && value <= 622) {
-    return Snow;
-  }
-  if (value === 800) {
-    // This is for clear sky
-    // Add code here
-    // If it is night, pass in moon
-    // else pass in sun
-    return Sun;
-  }
-  // default case
-  return Sun;
-}
 
 function createWeatherWidget(img, heading, data, unitImg) {
   const container = document.createElement('div');

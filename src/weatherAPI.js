@@ -60,27 +60,11 @@ async function getTodayMainWeatherData(cityName, units) {
 }
 
 async function getTodayHourlyData(city, units) {
-  // Create object for storing relevant weather data
-  const data = {
-    id: '',
-    mainWeather: '',
-    city: '',
-    temp: '',
-    description: '',
-    humidity: '',
-    windSpeed: '',
-    feelsLike: '',
-    lat: '',
-    lon: '',
-    unit: '',
-  };
   // Determine the units of measure
   let unit = units;
   if (unit === '' || typeof unit === 'undefined') {
     unit = 'imperial';
   }
-  // Save the units
-  data.unit = unit;
   // The key for the Weather API
   const apiKey = '6afefd0acc02015759340d80dc5686e2';
   // Get a response (returns a promise) for the requested data from OpenWeather

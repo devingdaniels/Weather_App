@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-  <link rel="icon" href="web-tab-favicon.png"><script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script></head>
+  <link rel="icon" href="web-tab-favicon.png"><script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script><script defer src="carousel.bundle.js"></script></head>
   <body>
     <main>
       <h1 class="heading">Current</h1>
@@ -39,12 +39,12 @@
       <div class="bottom-section">
         <section>
           <div class="forecast-carousel">
-            <button class="carousel-button carousel-button--left">
+            <button class="carousel-button carousel-button--left isHidden">
               <img src="bf3e5651b67d5cc98b05.svg" alt="">
             </button>
             <div class="carousel-track-container">
               <ul class="carousel-track">
-                <li class="carousel-slide">
+                <li class="carousel-slide current-slide">
                   <img class="carousel-image" src="01f5939edc5f6f6ec913.svg" alt="">
                 </li>
                 <li class="carousel-slide">

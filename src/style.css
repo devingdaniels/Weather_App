@@ -9,6 +9,7 @@ html{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    overflow: hidden;
 }
 main{
     padding: 1% 10% 0 10%;
@@ -122,7 +123,7 @@ input:-webkit-autofill:active {
     position: relative;
     width: 80%;
     margin: 0 auto;
-    height: 200px;
+    height: 150px;
 }
 
 .carousel-image{
@@ -135,7 +136,6 @@ input:-webkit-autofill:active {
 
 .carousel-track-container{
     position: relative;
-    border: 2px yellow solid;
     height: 100%;
     overflow: hidden;
 }
@@ -182,8 +182,8 @@ input:-webkit-autofill:active {
 .carousel-indicator{
     border: 0;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     background: rgba(255,255,255, .4);
     margin: 0 12px;
     cursor: pointer;
@@ -195,4 +195,23 @@ input:-webkit-autofill:active {
 
 .isHidden{
     display: none;
+}
+/* Forecast items inside the carousel */
+.carousel-panel{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+.forecastContainer{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    height: 150px;
+    justify-content: space-evenly;
+    
+}
+.forecastIcon{
+    height: 40px;
+    filter: invert(1);
 }

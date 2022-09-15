@@ -3,7 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry:
+  {
+    index: [path.resolve(__dirname, 'src', 'index.js')],
+    carousel: [path.resolve(__dirname, 'src', 'carousel.js')],
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
