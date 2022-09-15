@@ -3,17 +3,17 @@ import { firstCharSentenceUpper } from './helperFunctions';
 // Images
 import Fahrenheit from './assets/fahrenheit.svg';
 import Celsius from './assets/celsius.svg';
-import ThunderStorm from './assets/thunderstorm.svg';
-import Drizzle from './assets/drizzle.svg';
-import HeavyRain from './assets/heavy-rain.svg';
-import Snow from './assets/snow-flake.svg';
-import Sun from './assets/sun.svg';
+import ThunderStorm from './assets/conditions/thunderstorm.svg';
+import Drizzle from './assets/conditions/drizzle.svg';
+import HeavyRain from './assets/conditions/heavy-rain.svg';
+import Snow from './assets/conditions/snow-flake.svg';
+import Sun from './assets/conditions/sun.svg';
 import City from './assets/city.svg';
 import Location from './assets/location.svg';
 import Thermostat from './assets/thermostat.svg';
-import Wind from './assets/wind.svg';
+import Wind from './assets/conditions/wind.svg';
 import Speed from './assets/speed.svg';
-import Humidity from './assets/humidity.svg';
+import Humidity from './assets/conditions/humidity.svg';
 import Clock from './assets/clock.svg';
 
 function todayWeatherIcon(val) {

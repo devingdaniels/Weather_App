@@ -21,7 +21,12 @@ function firstCharSentenceUpper(string) {
   return result;
 }
 
+function createForecastCard(data) {
+  console.log(data);
+}
+
 export {
   addSearchIcon,
   firstCharSentenceUpper,
+  createForecastCard,
 };

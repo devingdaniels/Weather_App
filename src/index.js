@@ -1,7 +1,7 @@
 import './style.css';
-import { getTodayMainWeatherData, getTodayHourlyData } from './weatherAPI';
+import { getTodayMainWeatherData, getTodayHourlyData, parseForecastData } from './weatherAPI';
 import populateTodayWeatherData from './populateTodayWeather';
-import populateForecastWeatherData from './populateForecastData';
+import populateForecastWeatherData from './populateForecastWeather';
 import { addSearchIcon } from './helperFunctions';
 
 const searchButton = document.getElementById('searchForm');
@@ -20,7 +20,7 @@ searchButton.onclick = () => {
   // Call API, get forecast data, pass data and populate forecast view
   getTodayHourlyData(city, unit)
     .then((data) => {
-      populateForecastWeatherData(data);
+      parseForecastData(data);
     });
 };
 
@@ -32,6 +32,7 @@ function initWebSite() {
     });
   // Call API, get forecast data, pass data and populate forecast view
   getTodayHourlyData('Medellin', 'imperial')
+    .then((data) => parseForecastData(data))
     .then((data) => {
       populateForecastWeatherData(data);
     });

@@ -11,7 +11,7 @@ html{
     background-size: cover;
 }
 main{
-    padding: 6% 10% 0 10%;
+    padding: 3% 10% 0 10%;
 }
 .heading{
     color: white;
@@ -52,9 +52,12 @@ main{
 }
 
 #cityInput{
+    position: relative;
+    left: 12px;
     background-color: transparent;
     border: 1px solid white;
     color: white;
+    height: 25px;
 }
 #cityInput::placeholder{
     color: white;
@@ -82,6 +85,7 @@ input:-webkit-autofill:active {
     font-size: 17px;
     position: relative;
     top: 5px;
+    right: 15px;
     cursor: pointer;
 }
 /* Left and Right section of the today weather section */
