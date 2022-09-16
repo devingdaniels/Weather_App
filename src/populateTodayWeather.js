@@ -16,8 +16,7 @@ function createWeatherWidget(img, heading, data, unitImg) {
   container.classList.add('topRightItemContainer');
   const image = new Image();
   image.src = img;
-  image.classList.add('todayWeatherItemImage');
-
+  image.classList.add('leftImageIcon');
   const infoContainer = document.createElement('div');
   if (heading !== '') {
     const title = document.createElement('p');
@@ -25,12 +24,11 @@ function createWeatherWidget(img, heading, data, unitImg) {
     title.innerHTML = heading;
     infoContainer.append(title);
   }
-
   // Data with unit image
   const dataUnitContainer = document.createElement('div');
   dataUnitContainer.classList.add('dataInfoAndUnit');
   // The text
-  const dataInfo = document.createElement('h3');
+  const dataInfo = document.createElement('h5');
   dataInfo.innerHTML = data;
   dataUnitContainer.append(dataInfo);
   // The image
@@ -49,6 +47,7 @@ function createWeatherWidget(img, heading, data, unitImg) {
 
   return container;
 }
+
 function createCityItem(cityName) {
   // Container for city name and city image
   const el = document.createElement('div');
@@ -56,9 +55,9 @@ function createCityItem(cityName) {
   const img = new Image();
   img.src = City;
   img.alt = 'Icon representing a city';
-  img.classList.add('todayWeatherItemImage');
+  img.classList.add('leftImageIcon');
   el.append(img);
-  const name = document.createElement('h1');
+  const name = document.createElement('h5');
   name.innerHTML = cityName;
   el.append(name);
   return el;
@@ -72,25 +71,40 @@ function createLatLonItem(lat, lon) {
   const img = new Image();
   img.src = Location;
   img.alt = 'Icon representing a drop location';
-  img.classList.add('todayWeatherItemImage');
+  img.classList.add('leftImageIcon');
   el.append(img);
-  const coor = document.createElement('h3');
+  const coor = document.createElement('h5');
   coor.innerHTML = `${lat}, ${lon}`;
   el.append(coor);
   return el;
 }
+
+function formatLocalTime(string) {
+  const date = string.slice(0, 9);
+  const time = string.slice(11, 22);
+  return { date, time };
+}
+
 function createLocalTime(time) {
+  const dateTimeObject = formatLocalTime(time);
   // Container for time name and time image
   const el = document.createElement('div');
   // Create image
   const img = new Image();
   img.src = Clock;
   img.alt = 'Icon representing a city';
-  img.classList.add('todayWeatherItemImage');
+  img.classList.add('leftImageIcon');
+  // Date / time section
+  const dateTimeContainer = document.createElement('div');
+  const timeEl = document.createElement('h5');
+  timeEl.innerHTML = dateTimeObject.time;
+  const dateEl = document.createElement('h5');
+  dateEl.innerHTML = dateTimeObject.date;
+  dateTimeContainer.append(timeEl);
+  dateTimeContainer.append(dateEl);
+  // Appends
   el.append(img);
-  const name = document.createElement('h3');
-  name.innerHTML = time;
-  el.append(name);
+  el.append(dateTimeContainer);
   return el;
 }
 
