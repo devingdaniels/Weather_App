@@ -20,8 +20,15 @@ import BrokenClouds from './assets/conditions/broken-clouds.svg';
 import OvercastClouds from './assets/conditions/overcast-clouds.svg';
 import Moon from './assets/conditions/moon.svg';
 import Cat from './assets/conditions/cat.svg';
+import getLocaleTime from './getLocalTime';
+
+function getLatLonFromDom() {
+  const latLon = document.getElementById('lat-lon');
+  console.log(latLon);
+}
 
 function todayWeatherIcon(val) {
+  getLatLonFromDom();
   const value = Number(val);
   if (value >= 200 && value <= 232) {
     return ThunderStorm;
@@ -79,11 +86,9 @@ function todayWeatherIcon(val) {
     return OvercastClouds;
   }
   if (value === 800) {
-    const hour = (new Date()).getHours();
-    console.log(hour);
-    if ((hour >= 0 && hour <= 7) || (hour >= 19 && hour <= 24)) {
-      return Moon;
-    }
+    // if ((hour >= 0 && hour <= 7) || (hour >= 19 && hour <= 24)) {
+    //   return Moon;
+    // }
     return Sun;
   }
   // Got lazy, return cat
@@ -135,7 +140,7 @@ function createForecastCard(data) {
   // Image
   const img = document.createElement('img');
   img.classList.add('forecastIcon');
-  img.src = todayWeatherIcon(data.id);
+  img.src = todayWeatherIcon(data.id, data.lat, data.lon);
   // Temperature
   const temp = document.createElement('h5');
   temp.innerHTML = data.temp;

@@ -14,7 +14,7 @@ export default function populateForecastWeatherData(data) {
   data.forEach((item, index) => {
     if (index < 4) {
       document.getElementById('carousel-panel-one').append(createForecastCard(item));
-    } else if (index > 4 && index < 9) {
+    } else if (index >= 4 && index < 8) {
       document.getElementById('carousel-panel-two').append(createForecastCard(item));
     } else {
       document.getElementById('carousel-panel-three').append(createForecastCard(item));

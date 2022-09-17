@@ -38,13 +38,14 @@ main{
 #today-icon{
     height: 8em;
     filter: invert(1);
-    /* margin: 10px 0 10px 0; */
+    margin: 10px 0 10px 0;
 }
 
 .temperatureContainer{
     display: flex;
     font-size: 3rem;
     justify-content: center;
+    margin-bottom: 10px;
 }
 .temperatureContainer img{
     width: 1em;
@@ -62,13 +63,16 @@ main{
     background-color: transparent;
     border: none;
     color: white;
-    height: 25px;
+    height: 30px;
+    border-bottom: 1px groove white;
 }
 #cityInput::placeholder{
     color: white;
+    
 }
 #cityInput:focus, #cityInput:active {
     background: transparent;
+    outline: none;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

@@ -2,12 +2,14 @@ import getLocaleTime from './getLocalTime';
 
 /* eslint-disable no-unused-expressions */
 class Forecast {
-  constructor(id, temp, description, seaLevel, time) {
+  constructor(id, temp, description, seaLevel, time, lat, lon) {
     this.id = id;
     this.temp = temp;
     this.description = description;
     this.seaLevel = seaLevel;
     this.time = time;
+    this.lat = lat;
+    this.lon = lon;
   }
 }
 
@@ -76,6 +78,7 @@ async function getTodayHourlyData(city, units) {
 }
 
 async function parseForecastData(data) {
+  console.log(data);
   const array = [];
   // 12 because only need 12 3 hour increments
   // eslint-disable-next-line no-plusplus
@@ -85,7 +88,9 @@ async function parseForecastData(data) {
     const { description } = data.list[i].weather[0];
     const seaLevel = data.list[i].main.sea_level;
     const time = data.list[i].dt_txt; // time
-    array.push(new Forecast(iconId, temp, description, seaLevel, time));
+    const { lat } = data.city.coord;
+    const { lon } = data.city.coord;
+    array.push(new Forecast(iconId, temp, description, seaLevel, time, lat, lon));
   }
   return array;
 }
