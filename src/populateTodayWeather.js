@@ -1,5 +1,5 @@
 // Methods
-import { firstCharSentenceUpper, todayWeatherIcon } from './helperFunctions';
+import { firstCharSentenceUpper, todayWeatherIcon, addSearchIcon } from './helperFunctions';
 // Images
 import Fahrenheit from './assets/fahrenheit.svg';
 import Celsius from './assets/celsius.svg';
@@ -134,7 +134,8 @@ function populateMiddleSection(data) {
   const todayTemp = document.getElementById('today-temp');
   const unit = document.getElementById('unit');
   const todayDescription = document.getElementById('today-description');
-  todayIcon.src = todayWeatherIcon(data.id);
+  // ID determines weather icon, lat & lon are used to determine if its day or night in the city
+  todayIcon.src = todayWeatherIcon(data.id, data.lat, data.lon);
   // Set current tempature
   todayTemp.innerHTML = data.temp;
   // Display temp with current unit
@@ -179,6 +180,7 @@ function clearPreviousData() {
 }
 
 export default function populateTodayWeatherData(data) {
+  addSearchIcon();
   clearPreviousData();
   populateLeftSection(data);
   populateRightSection(data);

@@ -1,42 +1,43 @@
 import './style.css';
-import { getTodayMainWeatherData, getTodayHourlyData, parseForecastData } from './weatherAPI';
+import { getTodayMainWeatherData, getTodayHourlyData } from './weatherAPI';
 import populateTodayWeatherData from './populateTodayWeather';
 import populateForecastWeatherData from './populateForecastWeather';
-import { addSearchIcon } from './helperFunctions';
+import getLocation from './getUserLocation';
 
-const searchButton = document.getElementById('searchForm');
-
-searchButton.onclick = () => {
-  // Add code here for switching units of measure
-  // Hard code for now
-  const unit = 'imperial';
-  // Save the current city
-  const city = document.getElementById('cityInput').value;
-  // Call API, get current data, pass data and populate current view
-  getTodayMainWeatherData(city, unit)
-    .then((data) => {
-      populateTodayWeatherData(data);
-    });// add code here to catch errors
-  // Call API, get forecast data, pass data and populate forecast view
-  getTodayHourlyData(city, 'imperial')
-    .then((data) => parseForecastData(data))
-    .then((data) => {
-      populateForecastWeatherData(data);
-    });
-};
+const cityInput = document.getElementById('city-input').value;
+const searchButton = document.getElementById('search-button');
 
 function initWebSite() {
-  addSearchIcon();
-  getTodayMainWeatherData('Medellin')
+  const UNCODETHISCITY = 'New York';
+  // Get today weather data from the weather API module
+  getTodayMainWeatherData(UNCODETHISCITY)
     .then((data) => {
+      // Pass array of weather forecast objects, paint UI
       populateTodayWeatherData(data);
     });
-  // Call API, get forecast data, pass data and populate forecast view
-  getTodayHourlyData('Medellin', 'imperial')
-    .then((data) => parseForecastData(data))
+  // Get forecast data from the weather API module
+  getTodayHourlyData(UNCODETHISCITY, 'imperial')
+  // Pass array of weather forecast objects, paint UI
     .then((data) => {
       populateForecastWeatherData(data);
     });
 }
 
-initWebSite();
+window.onload = () => {
+  // Try to get location of user to
+  // const userLocation = getLocation();
+  // if (userLocation.isValid){
+  // Use the coordinates to get a city name
+  // Pass the city name to API calls
+  // }
+  // else {
+  // Pass in a default city, ie New York
+  // }
+
+  initWebSite();
+// if (userLocation.isGood) {
+//   // call weather api's with user coordinates
+// } else {
+//   // If they deny location services, load default
+// }
+};

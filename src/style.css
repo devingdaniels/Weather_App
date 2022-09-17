@@ -57,7 +57,7 @@ main{
     font-size: 1rem;
 }
 
-#cityInput{
+#city-input{
     position: relative;
     left: 12px;
     background-color: transparent;
@@ -66,11 +66,11 @@ main{
     height: 30px;
     border-bottom: 1px groove white;
 }
-#cityInput::placeholder{
+#city-input::placeholder{
     color: white;
     
 }
-#cityInput:focus, #cityInput:active {
+#city-input:focus, #city-input:active {
     background: transparent;
     outline: none;
 }
@@ -82,14 +82,14 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #fff !important;
 }
 
-#searchForm{
+#search-button{
     background-color: transparent;
     border: none;
     filter: invert(1);
     cursor: pointer;
 }
 
-#searchForm #searchIcon{
+#search-button #searchIcon{
     height: 17px;
     font-size: 17px;
     position: relative;

@@ -13,7 +13,6 @@ import Haze from './assets/conditions/haze.svg';
 import Fog from './assets/conditions/fog.svg';
 import Tornado from './assets/conditions/tornado.svg';
 import Mist from './assets/conditions/mist.svg';
-import Fahrenheit from './assets/fahrenheit.svg';
 import FewClouds from './assets/conditions/few-clouds.svg';
 import ScatteredClouds from './assets/conditions/scattered-clouds.svg';
 import BrokenClouds from './assets/conditions/broken-clouds.svg';
@@ -21,14 +20,52 @@ import OvercastClouds from './assets/conditions/overcast-clouds.svg';
 import Moon from './assets/conditions/moon.svg';
 import Cat from './assets/conditions/cat.svg';
 import getLocaleTime from './getLocalTime';
+// import Fahrenheit from './assets/fahrenheit.svg';
 
-function getLatLonFromDom() {
-  const latLon = document.getElementById('lat-lon');
-  console.log(latLon);
+function formatDate(date) {
+  // Input: 2022-09-19
+  // Output: 9/19/2022
+  const string = String(date);
+  const year = string.slice(0, 4);
+  const month = string.slice(6, 7);
+  const day = string.slice(8, 10);
+  const result = `${month}/${day}/${year}`;
+  return result;
 }
 
-function todayWeatherIcon(val) {
-  getLatLonFromDom();
+function formatForecastTime(string) {
+  // Input: 2022-09-18 00:00:00
+  // Output:{ 00:00:00, 9/18/2022 }
+  const time = string.substr(10);
+  const temp = string.slice(0, 10);
+  const date = formatDate(temp);
+  return { time, date };
+}
+
+function getTwentyFourHourTime(amPmString) {
+  const d = new Date(`1/1/2013 ${amPmString}`);
+  return `${d.getHours()}:${d.getMinutes()}`;
+}
+
+async function determineDayOrNight(lat, lon) {
+  // Get the local time
+  // Response example: 9/17/2022, 5:39:07 PM
+  const response = await getLocaleTime(lat, lon);
+  // Parse to just get: 5:39:07 PM
+  const parse = formatForecastTime(response);
+  let time = getTwentyFourHourTime(parse.time);
+  // time: 17:42
+  const round = time.slice(0, 2);
+  // round: '17'
+  time = Number(round);
+  // round: 17
+  if (time < 7 || time > 19) {
+    return Moon;
+  }
+  return Sun;
+}
+
+function todayWeatherIcon(val, lat, lon) {
   const value = Number(val);
   if (value >= 200 && value <= 232) {
     return ThunderStorm;
@@ -86,12 +123,11 @@ function todayWeatherIcon(val) {
     return OvercastClouds;
   }
   if (value === 800) {
-    // if ((hour >= 0 && hour <= 7) || (hour >= 19 && hour <= 24)) {
-    //   return Moon;
-    // }
-    return Sun;
+    const response = determineDayOrNight(lat, lon);
+    response.then((result) => console.log(result));
+    return Cat;
   }
-  // Got lazy, return cat
+  // Lazy coder, return cat
   return Cat;
 }
 
@@ -103,8 +139,9 @@ function addSearchIcon() {
   search.alt = 'Image of search icon';
 }
 function firstCharSentenceUpper(string) {
+  // Input:'this is a string'
+  // Output: 'This Is A String'
   const words = string.split(' ');
-
   let result = '';
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < words.length; i++) {
@@ -115,25 +152,6 @@ function firstCharSentenceUpper(string) {
   return result;
 }
 
-function formatDate(date) {
-  const string = String(date);
-  const year = string.slice(0, 4);
-  const month = string.slice(6, 7);
-  const day = string.slice(8, 10);
-  const result = `${month}/${day}/${year}`;
-  return result;
-}
-
-function formateForecastTime(string) {
-  // Break up the data from the time
-  // Format the date
-  // Return an object with date and the time
-  // Save the time
-  const time = string.substr(10);
-  const date = string.slice(0, 10);
-  const prettyDate = formatDate(date);
-  return { time, prettyDate };
-}
 function createForecastCard(data) {
   const container = document.createElement('div');
   container.classList.add('forecastContainer');
@@ -148,12 +166,12 @@ function createForecastCard(data) {
   const description = document.createElement('h5');
   description.innerHTML = firstCharSentenceUpper(data.description);
   description.style.fontStyle = 'italic';
-  // Get formated date and time
-  const dateTime = formateForecastTime(data.time);
+  // Get parsed formatted date and time object from formateForecastTime
+  const dateTime = formatForecastTime(data.time);
   const time = document.createElement('h5');
   time.innerHTML = dateTime.time;
   const date = document.createElement('h5');
-  date.innerHTML = dateTime.prettyDate;
+  date.innerHTML = dateTime.date;
   container.append(img);
   container.append(temp);
   container.append(description);

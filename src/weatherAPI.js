@@ -2,11 +2,10 @@ import getLocaleTime from './getLocalTime';
 
 /* eslint-disable no-unused-expressions */
 class Forecast {
-  constructor(id, temp, description, seaLevel, time, lat, lon) {
+  constructor(id, temp, description, time, lat, lon) {
     this.id = id;
     this.temp = temp;
     this.description = description;
-    this.seaLevel = seaLevel;
     this.time = time;
     this.lat = lat;
     this.lon = lon;
@@ -61,6 +60,21 @@ async function getTodayMainWeatherData(cityName, units) {
   return data;
 }
 
+function parseHourlyForecastData(data) {
+  const array = [];
+  // 12 because only need 12 forecast cards for the carousel
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 12; i++) {
+    const iconId = data.list[i].weather[0].id;
+    const { temp } = data.list[i].main;
+    const { description } = data.list[i].weather[0];
+    const time = data.list[i].dt_txt; // time
+    const { lat } = data.city.coord;
+    const { lon } = data.city.coord;
+    array.push(new Forecast(iconId, temp, description, time, lat, lon));
+  }
+  return array;
+}
 async function getTodayHourlyData(city, units) {
   // Determine the units of measure
   let unit = units;
@@ -73,30 +87,11 @@ async function getTodayHourlyData(city, units) {
   const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&appid=${apiKey}`, { mode: 'cors' });
   // Get data object we're are interested in
   const weatherData = await response.json();
-
-  return weatherData;
-}
-
-async function parseForecastData(data) {
-  console.log(data);
-  const array = [];
-  // 12 because only need 12 3 hour increments
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 12; i++) {
-    const iconId = data.list[i].weather[0].id;
-    const { temp } = data.list[i].main;
-    const { description } = data.list[i].weather[0];
-    const seaLevel = data.list[i].main.sea_level;
-    const time = data.list[i].dt_txt; // time
-    const { lat } = data.city.coord;
-    const { lon } = data.city.coord;
-    array.push(new Forecast(iconId, temp, description, seaLevel, time, lat, lon));
-  }
-  return array;
+  // Pass the weather object, return an array of forecast objects
+  return parseHourlyForecastData(weatherData);
 }
 
 export {
   getTodayMainWeatherData,
   getTodayHourlyData,
-  parseForecastData,
 };
