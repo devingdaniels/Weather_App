@@ -73,6 +73,7 @@ function parseHourlyForecastData(data) {
     const { lon } = data.city.coord;
     array.push(new Forecast(iconId, temp, description, time, lat, lon));
   }
+  // Save the array in the brain
   return array;
 }
 async function getTodayHourlyData(city, units) {

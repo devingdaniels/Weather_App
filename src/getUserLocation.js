@@ -1,37 +1,16 @@
-/*
-position.coords.latitude;
-position.coords.longitude;
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-*/
-class UserLocation {
-  constructor(lat, lon, isValid) {
-    this.lat = lat;
-    this.lon = lon;
-    this.isValid = isValid;
-  }
-}
-const userLocation = new UserLocation();
+import { weatherBrain } from './weatherBrain';
 
-async function showPosition(position) {
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
-  userLocation.lat = lat;
-  userLocation.lon = lon;
-  userLocation.isValid = true;
-}
-
-async function determineCoordinates() {
-  return new Promise((resolve, reject) => {
-    if (navigator.geolocation) {
-      resolve();
-      navigator.geolocation.getCurrentPosition(showPosition);
-    }
-    reject();
+function loadPosition() {
+  return new Promise((accept, reject) => {
+    navigator.geolocation.getCurrentPosition(accept, reject);
   });
 }
 
-export default async function getLocation() {
-  await determineCoordinates();
-  return userLocation;
+export default async function getPosition() {
+  const position = await loadPosition();
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  weatherBrain.currentLocation.lat = lat;
+  weatherBrain.currentLocation.lon = lon;
+  return { lat, lon };
 }

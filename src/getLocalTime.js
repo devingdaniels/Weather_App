@@ -1,4 +1,4 @@
-export default async function getLocaleTime(lat, lon) {
+export default async function getLocalTime(lat, lon) {
   // Google Maps API Key
   const apiKey = 'AIzaSyAFIYFe32hp97dIG58SXLczpBUqC8fC95U';
   // Fetch

@@ -124,7 +124,6 @@ function todayWeatherIcon(val, lat, lon) {
   }
   if (value === 800) {
     const response = determineDayOrNight(lat, lon);
-    response.then((result) => console.log(result));
     return Cat;
   }
   // Lazy coder, return cat
@@ -152,37 +151,9 @@ function firstCharSentenceUpper(string) {
   return result;
 }
 
-function createForecastCard(data) {
-  const container = document.createElement('div');
-  container.classList.add('forecastContainer');
-  // Image
-  const img = document.createElement('img');
-  img.classList.add('forecastIcon');
-  img.src = todayWeatherIcon(data.id, data.lat, data.lon);
-  // Temperature
-  const temp = document.createElement('h5');
-  temp.innerHTML = data.temp;
-  // Description
-  const description = document.createElement('h5');
-  description.innerHTML = firstCharSentenceUpper(data.description);
-  description.style.fontStyle = 'italic';
-  // Get parsed formatted date and time object from formateForecastTime
-  const dateTime = formatForecastTime(data.time);
-  const time = document.createElement('h5');
-  time.innerHTML = dateTime.time;
-  const date = document.createElement('h5');
-  date.innerHTML = dateTime.date;
-  container.append(img);
-  container.append(temp);
-  container.append(description);
-  container.append(time);
-  container.append(date);
-  return container;
-}
-
 export {
   addSearchIcon,
   firstCharSentenceUpper,
-  createForecastCard,
   todayWeatherIcon,
+  formatForecastTime,
 };
