@@ -17,10 +17,7 @@ import FewClouds from './assets/conditions/few-clouds.svg';
 import ScatteredClouds from './assets/conditions/scattered-clouds.svg';
 import BrokenClouds from './assets/conditions/broken-clouds.svg';
 import OvercastClouds from './assets/conditions/overcast-clouds.svg';
-import Moon from './assets/conditions/moon.svg';
 import Cat from './assets/conditions/cat.svg';
-import getLocaleTime from './getLocalTime';
-// import Fahrenheit from './assets/fahrenheit.svg';
 
 function formatDate(date) {
   // Input: 2022-09-19
@@ -42,30 +39,7 @@ function formatForecastTime(string) {
   return { time, date };
 }
 
-function getTwentyFourHourTime(amPmString) {
-  const d = new Date(`1/1/2013 ${amPmString}`);
-  return `${d.getHours()}:${d.getMinutes()}`;
-}
-
-async function determineDayOrNight(lat, lon) {
-  // Get the local time
-  // Response example: 9/17/2022, 5:39:07 PM
-  const response = await getLocaleTime(lat, lon);
-  // Parse to just get: 5:39:07 PM
-  const parse = formatForecastTime(response);
-  let time = getTwentyFourHourTime(parse.time);
-  // time: 17:42
-  const round = time.slice(0, 2);
-  // round: '17'
-  time = Number(round);
-  // round: 17
-  if (time < 7 || time > 19) {
-    return Moon;
-  }
-  return Sun;
-}
-
-function todayWeatherIcon(val, lat, lon) {
+function todayWeatherIcon(val) {
   const value = Number(val);
   if (value >= 200 && value <= 232) {
     return ThunderStorm;
@@ -123,8 +97,7 @@ function todayWeatherIcon(val, lat, lon) {
     return OvercastClouds;
   }
   if (value === 800) {
-    const response = determineDayOrNight(lat, lon);
-    return Cat;
+    return Sun;
   }
   // Lazy coder, return cat
   return Cat;
