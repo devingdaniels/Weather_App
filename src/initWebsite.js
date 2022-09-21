@@ -12,6 +12,7 @@ export default async function initWebsite() {
     const cityName = await getCityFromLatLon(latLon.lat, latLon.lon);
     weatherBrain.currentLocation.cityName = cityName;
   } catch {
+    // eslint-disable-next-line no-alert
     alert('Location services denied...loading default city.');
   }
 

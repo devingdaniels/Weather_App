@@ -5,10 +5,9 @@ import { weatherBrain } from './weatherBrain';
 import populateForecastWeatherData from './populateForecast';
 import populateTodayWeatherData from './populateTodayWeather';
 
-initWebsite();
-
-const searchButton = document.getElementById('search-button');
-searchButton.addEventListener('click', getWeather);
+window.onload = () => {
+  initWebsite();
+};
 
 async function getWeather() {
   const cityName = document.getElementById('city-input').value;
@@ -24,3 +23,6 @@ async function getWeather() {
   populateTodayWeatherData(mainWeatherData);
   populateForecastWeatherData(todayHourlyData);
 }
+
+const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', getWeather);
