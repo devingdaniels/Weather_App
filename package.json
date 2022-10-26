@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/devingdaniels/Weather_App/issues"
   },
-  "homepage": "https://github.com/devingdaniels/Weather_App#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
     "eslint": "^8.23.1",

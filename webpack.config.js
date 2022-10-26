@@ -5,6 +5,7 @@ module.exports = {
   mode: 'production',
   entry: {
     index: [path.resolve(__dirname, 'src', 'index.js')],
+    carousel: [path.resolve(__dirname, 'src', 'carousel.js')],
   },
   output: {
     filename: '[name].bundle.js',
@@ -37,5 +38,10 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: 'single',
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
 };

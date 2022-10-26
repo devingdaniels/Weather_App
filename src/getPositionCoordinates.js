@@ -1,4 +1,4 @@
-import { weatherBrain } from './weatherBrain';
+import weatherBrain from './weatherBrain';
 
 function loadPosition() {
   return new Promise((accept, reject) => {

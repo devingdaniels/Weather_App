@@ -1,229 +1,229 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-html{
-    background: url('./assets/background.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
+html {
+  background: url("./assets/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
 }
-main{
-    padding: 1% 5% 0 5%;
+main {
+  padding: 1% 5% 0 5%;
 }
-.heading{
-    color: white;
-    width: max-content;
-    margin: 0 auto 10px auto;
+.heading {
+  color: white;
+  width: max-content;
+  margin: 0 auto 10px auto;
 }
-.top-section{
-    display: flex;
-    color: white;
-    margin-bottom: 15px;
-    justify-content:space-evenly;
-}
-
-.middle-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
+.top-section {
+  display: flex;
+  color: white;
+  margin-bottom: 15px;
+  justify-content: space-evenly;
 }
 
-#today-icon{
-    height: 8em;
-    filter: invert(1);
-    margin: 10px 0 10px 0;
+.middle-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
 }
 
-.temperatureContainer{
-    display: flex;
-    font-size: 3rem;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-.temperatureContainer img{
-    width: 1em;
-    filter: invert(1);
-}
-#today-description{
-    font-style: italic;
-    margin-bottom: 10px;
-    font-size: 1rem;
+#today-icon {
+  height: 8em;
+  filter: invert(1);
+  margin: 10px 0 10px 0;
 }
 
-#city-input{
-    position: relative;
-    left: 12px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    height: 30px;
-    border-bottom: 1px groove white;
+.temperatureContainer {
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  margin-bottom: 10px;
 }
-#city-input::placeholder{
-    color: white;
-    
+.temperatureContainer img {
+  width: 1em;
+  filter: invert(1);
 }
-#city-input:focus, #city-input:active {
-    background: transparent;
-    outline: none;
+#today-description {
+  font-style: italic;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+#city-input {
+  position: relative;
+  left: 12px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  height: 30px;
+  border-bottom: 1px groove white;
+}
+#city-input::placeholder {
+  color: white;
+}
+#city-input:focus,
+#city-input:active {
+  background: transparent;
+  outline: none;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: #fff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
 }
 
-#search-button{
-    background-color: transparent;
-    border: none;
-    filter: invert(1);
-    cursor: pointer;
+#search-button {
+  background-color: transparent;
+  border: none;
+  filter: invert(1);
+  cursor: pointer;
 }
 
-#search-button #searchIcon{
-    height: 17px;
-    font-size: 17px;
-    position: relative;
-    top: 5px;
-    right: 15px;
-    cursor: pointer;
+#search-button #searchIcon {
+  height: 17px;
+  font-size: 17px;
+  position: relative;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
 }
 /* Left and Right section of the today weather section */
-.top-left-section, .top-right-section{
-    display: flex;
-    flex-direction: column;
-    justify-content:space-evenly;
-    /* Weird: pixels wont overflow data on shrink but percentage does?? */
-    width: 150px;
+.top-left-section,
+.top-right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* Weird: pixels wont overflow data on shrink but percentage does?? */
+  width: 150px;
 }
-.top-left-section{
-    text-align: center;
+.top-left-section {
+  text-align: center;
 }
-.topRightItemContainer{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 80%;
-    align-items: center;
+.topRightItemContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 80%;
+  align-items: center;
 }
-.leftImageIcon{
-    filter: invert(1);
-    height: 2.5rem;
+.leftImageIcon {
+  filter: invert(1);
+  height: 2.5rem;
 }
-.todayInfoLabel{
-    font-size: .3em;
+.todayInfoLabel {
+  font-size: 0.3em;
 }
-.dataInfoAndUnit{
-    display: flex;
-    font-size: 2em;
-    align-items: center;
+.dataInfoAndUnit {
+  display: flex;
+  font-size: 2em;
+  align-items: center;
 }
 /* Carousel */
-.forecast-carousel{
-    position: relative;
-    width: 80%;
-    margin: 0 auto;
-    height: 150px;
+.forecast-carousel {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  height: 150px;
 }
 
-.carousel-image{
-    height: 100%;
-    width: 100%;
-    /* Very useful for dynamic covering with images */
-    /* object-fit: cover; */
-    filter: invert(1);
+.carousel-image {
+  height: 100%;
+  width: 100%;
+  /* Very useful for dynamic covering with images */
+  /* object-fit: cover; */
+  filter: invert(1);
 }
 
-.carousel-track-container{
-    position: relative;
-    height: 100%;
-    overflow: hidden;
+.carousel-track-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
-.carousel-track{
-    list-style: none;
-    position: relative;
-    height: 100%;
-    transition: transform 880ms ease-in;
+.carousel-track {
+  list-style: none;
+  position: relative;
+  height: 100%;
+  transition: transform 880ms ease-in;
 }
-.carousel-slide{
-    position: absolute;
-    top: 0;
-    bottom: 0; 
-    width: 100%;
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
-.carousel-button{
-    position: absolute; 
-    top: 50%;
-    transform: translateY(-50%);
-    border: 0;
-    background-color: transparent;
-    filter: invert(1);
-    cursor: pointer;
-}
-
-.carousel-button--left{
-    left: -40px;
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background-color: transparent;
+  filter: invert(1);
+  cursor: pointer;
 }
 
-.carousel-button--right{
-    right: -40px;
+.carousel-button--left {
+  left: -40px;
+}
+
+.carousel-button--right {
+  right: -40px;
 }
 
 .carousel-button img {
-    width: 35px;
+  width: 35px;
 }
-.carousel-nav{
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-}
-
-.carousel-indicator{
-    border: 0;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    background: rgba(255,255,255, .6);
-    margin: 25px 15px 0 15px;
-    cursor: pointer;
-
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }
 
-.carousel-indicator.current-slide{
-    background: rgba(255,255,255, 1);
+.carousel-indicator {
+  border: 0;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  margin: 25px 15px 0 15px;
+  cursor: pointer;
 }
 
-.isHidden{
-    display: none;
+.carousel-indicator.current-slide {
+  background: rgba(255, 255, 255, 1);
+}
+
+.isHidden {
+  display: none;
 }
 /* Forecast items inside the carousel */
-.carousel-panel{
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
+.carousel-panel {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.forecastContainer{
-    display: flex;
-    flex-direction: column;
-    color: white;
-    text-align: center;
-    height: 150px;
-    justify-content: space-evenly;
-    border: 1px groove white;
-    border-radius: 10%;
-    width: 100px;
-    
+.forecastContainer {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  height: 150px;
+  justify-content: space-evenly;
+  border: 1px groove white;
+  border-radius: 10%;
+  width: 100px;
 }
-.forecastIcon{
-    height: 40px;
-    filter: invert(1);
+.forecastIcon {
+  height: 40px;
+  filter: invert(1);
 }

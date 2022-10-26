@@ -12,4 +12,4 @@ class Brain {
 
 const weatherBrain = new Brain();
 
-export { weatherBrain };
+export default weatherBrain;

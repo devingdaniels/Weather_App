@@ -1,7 +1,7 @@
 import './style.css';
 import initWebsite from './initWebsite';
 import { getTodayMainWeatherData, getTodayHourlyData } from './weatherAPI';
-import { weatherBrain } from './weatherBrain';
+import weatherBrain from './weatherBrain';
 import populateForecastWeatherData from './populateForecast';
 import populateTodayWeatherData from './populateTodayWeather';
 

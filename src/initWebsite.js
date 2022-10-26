@@ -1,13 +1,14 @@
 import { getTodayMainWeatherData, getTodayHourlyData } from './weatherAPI';
 import getCityFromLatLon from './getCityFromLatLon';
-import getPosition from './getUserLocation';
-import { weatherBrain } from './weatherBrain';
+import getPosition from './getPositionCoordinates';
+import weatherBrain from './weatherBrain';
 import populateForecastWeatherData from './populateForecast';
 import populateTodayWeatherData from './populateTodayWeather';
 
 export default async function initWebsite() {
   // Get location of user
   try {
+    // Get latitude and longitude
     const latLon = await getPosition();
     const cityName = await getCityFromLatLon(latLon.lat, latLon.lon);
     weatherBrain.currentLocation.cityName = cityName;
