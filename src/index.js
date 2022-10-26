@@ -16,7 +16,9 @@ async function getWeather() {
   try {
     mainWeatherData = await getTodayMainWeatherData(cityName);
     todayHourlyData = await getTodayHourlyData(cityName);
-  } catch { alert('Error searching for city, please retry.'); }
+  } catch {
+    alert('Error searching for city, please retry.');
+  }
 
   weatherBrain.hourlyForecastData = todayHourlyData;
   weatherBrain.todayForecastData = mainWeatherData;
